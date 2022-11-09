@@ -66,7 +66,13 @@ RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include RequestSpecHelper, type: :request
   config.include Devise::Test::IntegrationHelpers, type: :system
+
+  # テストスイートの実行が終わったらアップロードされたファイルを削除する
+  config.after(:suite) do
+    FileUtils.rm_rf("#{Rails.root}/tmp/storage")
+  end
 end
+
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
