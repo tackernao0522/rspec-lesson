@@ -105,6 +105,7 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.5.0)
     digest (3.1.0)
+    erb-formatter (0.3.0)
     erubi (1.10.0)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
@@ -292,6 +293,7 @@ DEPENDENCIES
   capybara!
   debug
   devise
+  erb-formatter
   factory_bot_rails
   faker
   geocoder
