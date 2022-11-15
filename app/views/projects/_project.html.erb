@@ -4,6 +4,17 @@
     <span class="bi bi-pencil-fill" aria-hidden="true"></span>
     Edit
   <% end %>
+  <% if project.completed? %>
+    <span class="badge bg-success">Completed</span>
+  <% else %>
+    <%= button_to complete_project_path(project),
+      method: :patch,
+      form: { style: "display: inline-block;"},
+      class: "btn btn-light btn-sm btn-inline" do %>
+      <span class="bi bi-check-lg" aria-hidden="true"></span>
+      Complete
+    <% end %>
+  <% end %>
 </h1>
 
 <div class="project-description">
@@ -16,7 +27,8 @@
 </p>
 
 <p>
-  Due: <%= full_date(project.due_on) %>
+  Due:
+  <%= full_date(project.due_on) %>
 </p>
 
 <hr class="divider">
@@ -31,14 +43,14 @@
 
 <table class="table">
   <thead>
-  <tr>
-    <th>Name</th>
-    <th class="task-actions">Actions</th>
-  </tr>
+    <tr>
+      <th>Name</th>
+      <th class="task-actions">Actions</th>
+    </tr>
   </thead>
 
   <tbody>
-  <%= render @project.tasks %>
+    <%= render @project.tasks %>
   </tbody>
 </table>
 
